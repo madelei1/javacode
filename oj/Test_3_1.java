@@ -11,6 +11,10 @@ public class Test_3 {
         //4-3-1-2-0
         x.addIndex(2,3);
         x.addIndex(3,8);
+        x.print();     //4 3 3 8 1 2 0
+        //x.remove(4);//3 3 8 1 2 0
+        System.out.println();
+        x.removeAll(3);
         x.print();
     }
 }
