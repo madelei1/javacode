@@ -107,4 +107,54 @@ public class DoubleLinkedList {
             x = x.next;
         }
     }
+    //删除一个值为val的链表
+    public void remove(int val) {
+        if (head == null) {
+            return;
+        }
+        DoubleNode node = head;
+        while (node != null) {
+            if (node.val == val) {
+                removeNode(node);
+                return;
+            } else {
+                node = node.next;
+            }
+        }
+    }
+    //删除一个节点
+    public void removeNode(DoubleNode node) {
+        DoubleNode x = node.prev;
+        DoubleNode y = node.next;
+        if (x == null) {
+            head = head.next;
+            head.prev = null;
+            size --;
+        } else if (y == null) {
+            last = last.prev;
+            last.next = null;
+            size --;
+        } else {
+            x.next = y;
+            y.prev = x;
+            node.prev = null;
+            node.next = null;
+            size --;
+        }
+    }
+    public void removeAll(int val) {
+        if (head == null) {
+            return;
+        }
+        DoubleNode x = head;
+        while (x != null) {
+            if (x.val == val) {
+                DoubleNode j = x.next;   //此处若不建立新的 j 会丢失后面接点；
+                removeNode(x);
+                x = j;
+            } else {
+                x = x.next;
+            }
+        }
+    }
 }
